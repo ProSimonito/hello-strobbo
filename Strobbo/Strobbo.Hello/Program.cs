@@ -1,4 +1,7 @@
-﻿static IEnumerable<string> Companies()
+﻿using Humanizer;
+using System.Globalization;
+
+static IEnumerable<string> Companies()
 {
     yield return "Ibis Hotels";
     yield return "Spar";
@@ -17,3 +20,16 @@ const string StrobboSummary = "Een_All_in_oplossing_met_payroll_integratie,_auto
 
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, Strobbo!");
+
+List<int> rankings = [];
+Random random = new();
+foreach (var company in Companies())
+{
+    int ranking = random.Next(1, 10);
+    rankings.Add(ranking);
+    Console.WriteLine($"Hello {company}: {ranking.ToWords()}.");
+}
+Console.WriteLine($"Prize: {(rankings.Average() * 100).ToString("C", CultureInfo.CreateSpecificCulture("da-DK"))}");
+
+Console.WriteLine($"{StrobboHeadline.Humanize()}");
+Console.WriteLine($"{StrobboSummary.Humanize()}");
