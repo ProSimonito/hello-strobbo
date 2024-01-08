@@ -1,9 +1,9 @@
-# Welcome
+# Hello Strobbo
 
-_Begin your journey by learning to write your first code using C#._
+_Learn the operators and techniques used to perform string formatting and basic math operations on numeric data._
 
-## Pre-requisites
-
+## Exercise
+<!-- 
 <ul>
     <li>Visual Studio 2022
   (Community/Professional/Enterprise Edition, any will do)</li>
@@ -12,10 +12,10 @@ _Begin your journey by learning to write your first code using C#._
     <li>.NET desktop development</li>
     <li>ASP.NET and web development</li>
   </ul>
-</ul>
+</ul> -->
 
-## Complete your setup
-
+## Resources
+<!-- 
 <ul>
     <li>Create a new Console App in a new Solution</li>
     <ul>
@@ -29,4 +29,4 @@ _Begin your journey by learning to write your first code using C#._
         <li>Name the Test Project: <mark>Strobbo.HelloTests</mark></li>
         <li>Run all tests and find the results in the Test Explorer</li>
     </ul>
-</ul>
+</ul> -->
