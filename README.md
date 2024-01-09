@@ -1,51 +1,78 @@
-# Create a web API with ASP.NET Core controllers
+# Haunted Wasteland
 
-_ASP.NET Core supports two approaches to creating APIs: a controller-based approach and minimal APIs. Controllers in an API project are classes that derive from ControllerBase. Minimal APIs define endpoints with logical handlers in lambdas or methods._
+_You're riding a camel across the desert when you spot a sandstorm quickly approaching._
 
 ## Exercise
 
-<ul>
-    <li>Create a web API project named: <code>Strobbo.WebApi</code></li>
-    <ul>
-        <li>Don't use any authentication type</li>
-        <li>Make sure the bottom checkbox is checked to <code>Use controllers</code></li>
-    </ul>
-    <li>Take your time to get familiar with the generated files and set the newly created project as your startup project.</li>
-    <li>Build and run the application. You will notice an example endpoint.</li>
-    <ul>
-        <li>Use Swagger to trigger a GET request.</li>
-        <li>Use the http file to trigger a GET request.</li>
-    </ul>
-</ul>
+### Part One
 
-Before we start to implement a new web API, you need to have a data store on which you can perform operations. In this exercise, we'll use a simple local in-memory caching service. In a real-world application, you'd consider using a database.
+One of the camel's pouches is labeled "maps" - sure enough, it's full of documents (your puzzle input) about how to navigate the desert. At least, you're pretty sure that's what they are; one of the documents contains a list of left/right instructions, and the rest of the documents seem to describe some kind of **network** of labeled nodes
 
+It seems like you're meant to use the **left/right** instructions to **navigate the network**. Perhaps if you have the camel follow the same instructions, you can escape the haunted wasteland!
 
-<ul>
-    <li>Create a new folder in the WebApi project: <code>Models</code></li>
-    <li>Move the file <code>Sushi.cs</code> to this folder and adjust it's namespace</li>
-    <li>Create a new folder in the WebApi project: <code>Services</code></li>
-    <li>Move the file <code>SushiService.cs</code> to this folder and adjust it's namespace</li>
-    <li>The build succeeds with no warnings. If the build fails, check the output for troubleshooting information.</li>
-</ul>
+After examining the maps for a bit, two nodes stick out: AAA and ZZZ. You feel like AAA is where you are now, and you have to follow the left/right instructions until you reach ZZZ.
 
-Now we'll add a new controller for our Sushi service
+This format defines each **node** of the network individually. For example:
 
-<ul>
-    <li>Add a new controller in the Controller folder named: <code>SushiController</code>. Make sure to create an API controller, and not an MVC controller</li>
-    <li>Now implement the following requests</li>
-    <ul>
-        <li>GET all action</li>
-        <li>GET by Id action. Return a Not Found when not present in the in-memory caching service.</li>
-        <li>POST action. Create a new sushi item.</li>
-        <li>PUT action. Update an existing sushi item.</li>
-        <li>DELETE action. Delete an existing sushi item.</li>
-    </ul>
-    <li>(optional) Create an interface for the service and use dependency injection to inject the service into your controller.</li>
-</ul>
+```
+RL
 
-## Resources
+AAA = (BBB, CCC)
+BBB = (DDD, EEE)
+CCC = (ZZZ, GGG)
+DDD = (DDD, DDD)
+EEE = (EEE, EEE)
+GGG = (GGG, GGG)
+ZZZ = (ZZZ, ZZZ)
+ ```
 
-- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/apis?view=aspnetcore-8.0
-- https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&tabs=visual-studio
-- https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/dependency-injection?view=aspnetcore-8.0
+Starting with AAA, you need to **look up the next element** based on the next left/right instruction in your input. In this example, start with AAA and go **right** (R) by choosing the right element of AAA, **CCC**. Then, L means to choose the **left** element of CCC, **ZZZ**. By following the left/right instructions, you reach ZZZ in **2** steps.
+
+Of course, you might not find ZZZ right away. If you run out of left/right instructions, repeat the whole sequence of instructions as necessary: RL really means RLRLRLRLRLRLRLRL... and so on. For example, here is a situation that takes 6 steps to reach ZZZ:
+
+```
+LLR
+
+AAA = (BBB, BBB)
+BBB = (AAA, ZZZ)
+ZZZ = (ZZZ, ZZZ)
+```
+Starting at AAA, follow the left/right instructions. **How many steps are required to reach ZZZ?**
+
+Your puzzle input is found in the **input.txt** file.
+
+### Part Two
+
+The sandstorm is upon you and you aren't any closer to escaping the wasteland. You had the camel follow the instructions, but you've barely left your starting position. It's going to take **significantly more steps** to escape!
+
+What if the map isn't for people - what if the map is for **ghosts**? Are ghosts even bound by the laws of spacetime? Only one way to find out.
+
+After examining the maps a bit longer, your attention is drawn to a curious fact: the number of nodes with names ending in A is equal to the number ending in Z! If you were a ghost, you'd probably just **start at every node that ends with A** and follow all of the paths at the same time until they all simultaneously end up at nodes that end with Z.
+
+For example:
+```
+LR
+
+11A = (11B, XXX)
+11B = (XXX, 11Z)
+11Z = (11B, XXX)
+22A = (22B, XXX)
+22B = (22C, 22C)
+22C = (22Z, 22Z)
+22Z = (22B, 22B)
+XXX = (XXX, XXX)
+```
+Here, there are two starting nodes, 11A and 22A (because they both end with A). As you follow each left/right instruction, use that instruction to **simultaneously** navigate away from both nodes you're currently on. Repeat this process until **all** of the nodes you're currently on end with Z. (If only some of the nodes you're on end with Z, they act like any other node and you continue as normal.) In this example, you would proceed as follows:
+
+- Step 0: You are at 11A and 22A.
+- Step 1: You choose all of the **left** paths, leading you to 11B and 22B.
+- Step 2: You choose all of the **right** paths, leading you to **11Z** and 22C.
+- Step 3: You choose all of the **left** paths, leading you to 11B and **22Z**.
+- Step 4: You choose all of the **right** paths, leading you to **11Z** and 22B.
+- Step 5: You choose all of the **left** paths, leading you to 11B and 22C.
+- Step 6: You choose all of the **right** paths, leading you to **11Z** and **22Z**.
+
+So, in this example, you end up entirely on nodes that end in Z after **6** steps.
+
+Simultaneously start on every node that ends with A. **How many steps does it take before you're only on nodes that end with Z?**
+
