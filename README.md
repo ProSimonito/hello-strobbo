@@ -4,38 +4,29 @@ _Demonstrate your ability to develop a console app that relies on classes and me
 
 ## Scenario
 
-Suppose you're the owner of a karting circuit, Contoso Karting. You must regularly coordinate visits from different companies and organize the karts. You decide to write an application that helps you plan group visits.
-The application divides visiting companies into smaller groups and assigns them to a set of karts they can race with. They will rotate groups after each race so everyone can drive different karts. You decide to randomize the kart order so that each race is unique.
+Suppose you're the owner of a karting circuit, Contoso Karting. You must regularly coordinate visits and organize the karts. You decide to write an application that helps you plan group visits.
+The application divides a large group into smaller groups and assigns them to a set of karts they can race with. They will rotate groups after each race so everyone can drive different karts. You decide to randomize the kart order so that each race is unique.
 
 Take a moment to consider the design specification:
-
-<ul>
-    <li>There will be three visiting companies</li>
-    <ul>
-        <li>SD Worx has six visiting groups (the default number)</li>
-        <li>Protime has three visiting groups</li>
-        <li>Strobbo has two visiting groups</li>
-    </ul>
-</ul>
 
 <ul>
     <li>For each visiting group, perform the following tasks</li>
     <ul>
         <li>Randomize the karts</li>
         <li>Assign the karts to the correct number of groups</li>
-        <li>Print the company name</li>
+        <li>Print the group name</li>
         <li>Print the kart groups</li>
     </ul>
 </ul>
 
 ## Exercise
 
-To get started, you'll focus on writing the pseudo-code for just one visiting company. When you figure out the code for one company, you can easily apply the same logic to the others.
+To get started, you'll focus on writing the pseudo-code.
 
 <ul>
     <li>The first task is to randomize the karts. Create a pseudo-code method: <code>// RandomizeKarts();</code></li>
     <li>Next, create a pseudo-code method to assign the groups: <code>// AssignGroups();</code></li>
-    <li>You can easily print the company name using: <code>Console.WriteLine("Strobbo");</code></li>
+    <li>You can easily print the group name using: <code>Console.WriteLine("Strobbo");</code></li>
     <li>Lastly, you'll need to print the assigned groups: <code>// PrintGroup(group);</code></li>
     <ul>
         <li>Notice that you added a parameter to this method. Take a moment to consider where you can initialize the <code>group</code> argument in your pseudo-code.</li>
@@ -46,7 +37,7 @@ To get started, you'll focus on writing the pseudo-code for just one visiting co
 Now that we've expressed our intentions through the means of methods, let's get started with it's implementations.
 
 <ul>
-    <li>Create the method that randomizes the elements of an array. For this method you don't need any input parameters since you'll use the existing <code>Peepz</code> variable.</li>
+    <li>Create the method that randomizes the elements of an array. For this method you don't need any input parameters since you'll use the existing <code>Karts</code> variable.</li>
     <li>Uncomment the call to <code>RandomizeKarts()</code> by removing the starting <code>// </code> characters</li>
     <li>Set a breakpoint in your method and run the application to step through your method to verify if your method produces the desired effect.</li>
 </ul>
