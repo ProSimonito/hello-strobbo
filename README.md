@@ -1,6 +1,6 @@
 # Methods and Classes
 
-_Demonstrate your ability to develop a console app that relies on methods with different parameters and return values._
+_Demonstrate your ability to develop a console app that relies on classes and methods with different parameters and return values._
 
 ## Exercise
 
