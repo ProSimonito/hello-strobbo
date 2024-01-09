@@ -1,26 +1,21 @@
-﻿string[] Employees =
+﻿string[] Karts =
 [
-    "Pieter",
-    "Sofie",
-    "Ellen",
-    "Bram",
-    "Tim",
-    "Annelies",
-    "Thomas",
-    "Bert",
-    "Stefan",
-    "Kjelle",
-    "Martijn",
-    "Cescia",
-    "Sfen",
-    "Jinte",
-    "Michiel",
-    "Maarten",
-    "Jinte",
-    "Guus",
+    "Moon Unit",
+    "Exa Dark Sideræl",
+    "Hellzel",
+    "Cyanide",
+    "$helly",
+    "Shanda Lear",
+    "Marijuana",
+    "Portabella",
+    "Phelony",
+    "Maybelline",
+    "Talula Does The Hula From Hawaii",
+    "Cinnamon",
+    "Fanny",
+    "Maim",
+    "Fifi Trixibelle",
+    "Vanity",
+    "Blue Ivy",
+    "Tu Morrow",
 ];
-
-static void RandomizeAnimals()
-{
-    
-}

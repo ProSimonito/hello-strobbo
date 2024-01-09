@@ -34,32 +34,37 @@ To get started, you'll focus on writing the pseudo-code for just one visiting co
 
 <ul>
     <li>The first task is to randomize the karts. Create a pseudo-code method: <code>// RandomizeKarts();</code></li>
-    <li>Next, create a pseudo-code method to assign the karts: <code>// AssignKarts();</code></li>
-    <li>You can easily print the company name using: <code>Console.WriteLine("SD Worx");</code></li>
-    <li>Lastly, you'll need to print the kart groups: <code>PrintGroup(group);</code></li>
+    <li>Next, create a pseudo-code method to assign the groups: <code>// AssignGroups();</code></li>
+    <li>You can easily print the company name using: <code>Console.WriteLine("Strobbo");</code></li>
+    <li>Lastly, you'll need to print the assigned groups: <code>// PrintGroup(group);</code></li>
     <ul>
         <li>Notice that you added a parameter to this method. Take a moment to consider where you can initialize the <code>group</code> argument in your pseudo-code.</li>
     </ul>
-    <!-- <li>Say hello to all companies in our Console Application</li>
-    <ul>
-      <li>For each company, write <code>Hello</code> and the name of the company to the console. Use <u>String Interpolation</u>.</li>
-      <li>Now, add a rating to the company. Use the <code>Random()</code> class to generate a rating between 1 and 10 for each company and add it to the console output.</li>
-      <li>(optional) calculate the average of all ratings. The company with the best average wins a prize: the average rating amount multiplied by 100. Write this number to the console as currency in Danish krones.</li>
-    </ul>
-    <li>Add NuGet package <code>Humanizer</code> as a dependency.</li>
-    <ul>
-      <li>"Humanize" the StrobboHeadline and StrobboSummary and write it to the console.</li>
-      <li>Use the <code>Humanizer</code> package to write the company rating as words to the console.</li>
-    </ul>
-    <li>Remove the <code>Humanizer</code> dependency directly from the project file.</li> -->
+    <li>Run the console app with the commented pseudo-code to ensure there are no issues and to verify that the company name is displayed.</li>
+</ul>
+
+Now that we've expressed our intentions through the means of methods, let's get started with it's implementations.
+
+<ul>
+    <li>Create the method that randomizes the elements of an array. For this method you don't need any input parameters since you'll use the existing <code>Peepz</code> variable.</li>
+    <li>Uncomment the call to <code>RandomizeKarts()</code> by removing the starting <code>// </code> characters</li>
+    <li>Set a breakpoint in your method and run the application to step through your method to verify if your method produces the desired effect.</li>
+</ul>
+
+Observant developers will notice that it's rather inconvenient to start your application whenever you feel like debugging, so let's extract this method into a separate Class.
+
+<ul>
+    <li>Create a Class named: <code>KartingCircuit</code></li>
+    <li>Refactor the code so the <code>RandomizeKarts()</code> method is moved to the newly created class.</li>
+    <li>Now write a unit test to assert the outcome of your method. (this implies you will have to refactor your method's signature and class input parameters)</li>
+    <li>(optional) try to implement the remaining methods as well, where the <code>AssignGroups(int groups = 6)</code> method returns a 2D array <code>string[,]</code> of karts.</li>
 </ul>
 
 ## Resources
 
-<!--
-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated
-- https://learn.microsoft.com/en-us/dotnet/api/system.random?view=net-8.0
-- https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.average?view=net-8.0
-- https://learn.microsoft.com/en-us/dotnet/api/system.decimal.tostring?view=net-8.0
-- https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#CFormatString
-- https://github.com/Humanizr/Humanizer -->
+- https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods
+- https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/classes
+- https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/classes
+- https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net
+- https://learn.microsoft.com/en-us/dotnet/api/system.random.shuffle?view=net-8.0
+- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays
