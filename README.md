@@ -47,7 +47,7 @@ Observant developers will notice that it's rather inconvenient to start your app
 <ul>
     <li>Create a Class named: <code>KartingCircuit</code></li>
     <li>Refactor the code so the <code>RandomizeKarts()</code> method is moved to the newly created class.</li>
-    <li>Now write a unit test to assert the outcome of your method. (this implies you will have to refactor your method's signature and class input parameters)</li>
+    <li>Now write a unit test to assert the outcome of your method. (this implies you'll have to refactor your method's signature and class input parameters)</li>
     <li>(optional) try to implement the remaining methods as well, where the <code>AssignGroups(int groups = 6)</code> method returns a 2D array <code>string[,]</code> of karts.</li>
 </ul>
 
