@@ -1,4 +1,6 @@
-﻿string[] Karts =
+﻿using Strobbo.Hello;
+
+string[] Karts =
 [
     "Moon Unit",
     "Exa Dark Sideræl",
@@ -19,3 +21,10 @@
     "Blue Ivy",
     "Tu Morrow",
 ];
+
+KartingCircuit circuit = new(Karts);
+
+circuit.RandomizeKarts();
+var groups = circuit.AssignGroups();
+Console.WriteLine("Strobbo");
+KartingCircuit.PrintGroup(groups);
