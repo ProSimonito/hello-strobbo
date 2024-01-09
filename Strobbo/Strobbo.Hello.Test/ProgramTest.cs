@@ -1,11 +1,11 @@
 namespace Strobbo.HelloTests
 {
-    public class UnitTest1
+    public class ProgramTest
     {
         [Fact]
         public void Test1()
         {
-
+            RandomizeAnimals();
         }
     }
 }
