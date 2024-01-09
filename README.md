@@ -1,61 +1,51 @@
-# Methods and Classes
+# Create a web API with ASP.NET Core controllers
 
-_Demonstrate your ability to develop a console app that relies on classes and methods with different parameters and return values._
-
-## Scenario
-
-Suppose you're the owner of a karting circuit, Contoso Karting. You must regularly coordinate visits and organize the karts. You decide to write an application that helps you plan group visits.
-The application divides a large group into smaller groups and assigns them to a set of karts they can race with. They will rotate groups after each race so everyone can drive different karts. You decide to randomize the kart order so that each race is unique.
-
-Take a moment to consider the design specification:
-
-<ul>
-    <li>For each visiting group, perform the following tasks</li>
-    <ul>
-        <li>Randomize the karts</li>
-        <li>Assign the karts to the correct number of groups</li>
-        <li>Print the group name</li>
-        <li>Print the kart groups</li>
-    </ul>
-</ul>
+_ASP.NET Core supports two approaches to creating APIs: a controller-based approach and minimal APIs. Controllers in an API project are classes that derive from ControllerBase. Minimal APIs define endpoints with logical handlers in lambdas or methods._
 
 ## Exercise
 
-To get started, you'll focus on writing the pseudo-code.
-
 <ul>
-    <li>The first task is to randomize the karts. Create a pseudo-code method: <code>// RandomizeKarts();</code></li>
-    <li>Next, create a pseudo-code method to assign the groups: <code>// AssignGroups();</code></li>
-    <li>You can easily print the group name using: <code>Console.WriteLine("Strobbo");</code></li>
-    <li>Lastly, you'll need to print the assigned groups: <code>// PrintGroup(group);</code></li>
+    <li>Create a web API project named: <code>Strobbo.WebApi</code></li>
     <ul>
-        <li>Notice that you added a parameter to this method. Take a moment to consider where you can initialize the <code>group</code> argument in your pseudo-code.</li>
+        <li>Don't use any authentication type</li>
+        <li>Make sure the bottom checkbox is checked to <code>Use controllers</code></li>
     </ul>
-    <li>Run the console app with the commented pseudo-code to ensure there are no issues and to verify that the company name is displayed.</li>
+    <li>Take your time to get familiar with the generated files and set the newly created project as your startup project.</li>
+    <li>Build and run the application. You will notice an example endpoint.</li>
+    <ul>
+        <li>Use Swagger to trigger a GET request.</li>
+        <li>Use the http file to trigger a GET request.</li>
+    </ul>
 </ul>
 
-Now that we've expressed our intentions through the means of methods, let's get started with it's implementations.
+Before we start to implement a new web API, you need to have a data store on which you can perform operations. In this exercise, we'll use a simple local in-memory caching service. In a real-world application, you'd consider using a database.
+
 
 <ul>
-    <li>Create the method that randomizes the elements of an array. For this method you don't need any input parameters since you'll use the existing <code>Karts</code> variable.</li>
-    <li>Uncomment the call to <code>RandomizeKarts()</code> by removing the starting <code>// </code> characters</li>
-    <li>Set a breakpoint in your method and run the application to step through your method to verify if your method produces the desired effect.</li>
+    <li>Create a new folder in the WebApi project: <code>Models</code></li>
+    <li>Move the file <code>Sushi.cs</code> to this folder and adjust it's namespace</li>
+    <li>Create a new folder in the WebApi project: <code>Services</code></li>
+    <li>Move the file <code>SushiService.cs</code> to this folder and adjust it's namespace</li>
+    <li>The build succeeds with no warnings. If the build fails, check the output for troubleshooting information.</li>
 </ul>
 
-Observant developers will notice that it's rather inconvenient to start your application whenever you feel like debugging, so let's extract this method into a separate Class.
+Now we'll add a new controller for our Sushi service
 
 <ul>
-    <li>Create a Class named: <code>KartingCircuit</code></li>
-    <li>Refactor the code so the <code>RandomizeKarts()</code> method is moved to the newly created class.</li>
-    <li>Now write a unit test to assert the outcome of your method. (this implies you'll have to refactor your method's signature and class input parameters)</li>
-    <li>(optional) try to implement the remaining methods as well, where the <code>AssignGroups(int groups = 6)</code> method returns a 2D array <code>string[,]</code> of karts.</li>
+    <li>Add a new controller in the Controller folder named: <code>SushiController</code>. Make sure to create an API controller, and not an MVC controller</li>
+    <li>Now implement the following requests</li>
+    <ul>
+        <li>GET all action</li>
+        <li>GET by Id action. Return a Not Found when not present in the in-memory caching service.</li>
+        <li>POST action. Create a new sushi item.</li>
+        <li>PUT action. Update an existing sushi item.</li>
+        <li>DELETE action. Delete an existing sushi item.</li>
+    </ul>
+    <li>(optional) Create an interface for the service and use dependency injection to inject the service into your controller.</li>
 </ul>
 
 ## Resources
 
-- https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods
-- https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/classes
-- https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/classes
-- https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net
-- https://learn.microsoft.com/en-us/dotnet/api/system.random.shuffle?view=net-8.0
-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays
+- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/apis?view=aspnetcore-8.0
+- https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&tabs=visual-studio
+- https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/dependency-injection?view=aspnetcore-8.0
