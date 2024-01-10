@@ -9,7 +9,7 @@ _Learn the operators and techniques used to perform string formatting and basic 
     <ul>
       <li>For each company, write <code>Hello</code> and the name of the company to the console. Use <u>String Interpolation</u>.</li>
       <li>Now, add a rating to the company. Use the <code>Random()</code> class to generate a rating between 1 and 10 for each company and add it to the console output.</li>
-      <li>(optional) calculate the average of all ratings. The company with the best average wins a prize: the average rating amount multiplied by 100. Write this number to the console as currency in Danish krones.</li>
+      <li>(optional) calculate the average of all ratings. The company with the best ranking wins a prize: the average rating amount multiplied by 100. Write this number to the console as currency in Danish krones.</li>
     </ul>
     <li>Add NuGet package <code>Humanizer</code> as a dependency.</li>
     <ul>
